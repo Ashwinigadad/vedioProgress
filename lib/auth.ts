@@ -5,7 +5,6 @@ import { prisma } from "@/lib/db";
 import { compare } from "bcrypt";
 
 export const authOptions: NextAuthOptions = {
-  //prisma adaptor
   
   adapter: PrismaAdapter(prisma),
   session: {
