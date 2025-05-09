@@ -9,6 +9,7 @@ datasource db {
 }
 
 // Define your models here
+//api defined
 model User {
   id        String   @id @default(cuid())
   name      String?
