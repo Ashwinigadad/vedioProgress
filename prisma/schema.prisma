@@ -1,20 +1,35 @@
-
-generator client {
-  provider = "prisma-client-js"
-}
-
-datasource db {
-  provider = "postgresql"
-  url      = env("DATABASE_URL")
-}
-
-// Define your models here
-//api defined
 model User {
-  id        String   @id @default(cuid())
+  id        String     @id @default(cuid())
   name      String?
-  email     String   @unique
-  password  String   // Add this line
-  createdAt DateTime @default(now())
-  updatedAt DateTime @updatedAt
+  email     String     @unique
+  password  String
+  createdAt DateTime   @default(now())
+  updatedAt DateTime   @updatedAt
+
+  progresses Progress[] // 1:N relationship with progress
+}
+
+model Lecture {
+  id        String     @id @default(cuid())
+  title     String
+  duration  Int        // Duration in seconds
+  createdAt DateTime   @default(now())
+  updatedAt DateTime   @updatedAt
+
+  progresses Progress[] // 1:N relationship with progress
+}
+
+model Progress {
+  userId            String
+  lectureId         String
+  watchedIntervals  Json
+  progressPercentage Int
+  lastPosition      Int
+  createdAt         DateTime @default(now())
+  updatedAt         DateTime @updatedAt
+
+  user    User    @relation(fields: [userId], references: [id])
+  lecture Lecture @relation(fields: [lectureId], references: [id])
+
+  @@id([userId, lectureId]) // Composite primary key
 }
