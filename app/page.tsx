@@ -1,8 +1,8 @@
 import { Button } from "@/components/ui/button";
-import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card";
+// import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card";
 import Link from "next/link";
 import { ArrowRight, Presentation, BarChart, BookOpen } from "lucide-react";
-import { motion } from "framer-motion";
+// import { motion } from "framer-motion";
 import { HeroSection } from "@/components/landing/hero-section";
 import { FeatureSection } from "@/components/landing/feature-section";
 
